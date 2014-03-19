@@ -1,10 +1,24 @@
-# node-spamc
+# spamc
 
-node-spamc is a nodejs module that connects to spamassassin's spamd daemon. You are able to:
+*This is a fork from [coxeh/node-spamc](https://github.com/coxeh/node-spamc) just to publish it to npm.*
+
+spamc is a nodejs module that connects to spamassassin's spamd daemon using the spamc interface. You are able to:
 
   - Check a message for a spam score and return back what spamassassin matched on
   - Ability to send messages to spamassassin to learn from
   - Ability to do everything that `spamc` is capable of
+
+Note that the native spamassassin and spamc package must be available on your machine. On Debian / Ubuntu:
+
+```
+sudo aptitude install spamassassin spamc
+```
+
+then something like:
+
+```
+sudo npm install --save spamc
+```
 
 ## Commands Available
 
@@ -23,12 +37,14 @@ node-spamc is a nodejs module that connects to spamassassin's spamd daemon. You 
 
 This example will parse a message to spamassassin to perform a report and will callback on success.
 
-    var spamc = require('./spamc');
-    var client = new spamc();
+```javascript
+  var Spamc = require('spamc');
+  var spamc = new Spamc();
 
-    client.report('My Message as String',function(result){
-        console.log(result);
-    });
+  spamc.report('My full email message as a string', function (result) {
+      console.log(result);
+  });
+```
 
 
     
