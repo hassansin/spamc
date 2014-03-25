@@ -4,10 +4,13 @@
  * Time: 08:46
  * Description: Front end to check spamc client
  */
-var spamc = require('./spamc');
+var spamc = require('../index');
 var client = new spamc();
 
-client.report('My Message as String',function(result){
+client.report('My Message as String',function(err, result){
+    if (err) console.log(err.stack);
+
+    console.log('Spamassassin report:');
     console.log(result);
 });
 
