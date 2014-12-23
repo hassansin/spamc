@@ -299,7 +299,7 @@ var spamc = function (host, port, timeout) {
             cmd = cmd + " SPAMC/" + protocolVersion + "\r\n";
             if (typeof (message) == 'string') {
                 message = message + '\r\n';
-                cmd = cmd + "Content-length: " + (message.length) + "\r\n";
+                cmd = cmd + "Content-length: " + ( Buffer.byteLength(message) ) + "\r\n";
                 /* Process Extra Headers if Any */
                 if (typeof (extraHeaders) == 'object') {
                     for (var i = 0; i < extraHeaders.length; i++) {
