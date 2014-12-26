@@ -348,7 +348,7 @@ var spamc = function (host, port, timeout) {
         var i = 0;
         var ii = 0;
         for (i = 0; i < lines.length; i++) {
-            result = lines[i].match(/Spam:\s(True|False|Yes|No)\s;\s([0-9\.]+)\s\/\s([0-9\.]+)/);
+            result = lines[i].match(/Spam:\s(True|False|Yes|No)\s;\s([0-9\.\-]+)\s\/\s([0-9\.]+)/);
             if (result) {
                 returnObj.isSpam = false;
                 if (result[1] == 'True' || result[1] == 'Yes') {
